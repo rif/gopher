@@ -9,11 +9,10 @@ import (
 )
 
 func main() {
-	log.Print("Hello gopher")
 	base := "http://localhost:8080/api/add"
 	v := url.Values{}
 	v.Set("name", "cgrates")
-	v.Add("url", "github.com/cgrates/cgrate")
+	v.Add("repo", "github.com/cgrates/cgrates")
 	v.Add("description", "A rating system")
 	v.Add("friend", "Zoe")
 	resp, err := http.Get(base + "?" + v.Encode())
