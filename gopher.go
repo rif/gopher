@@ -13,11 +13,12 @@ func main() {
 	v := url.Values{}
 	v.Set("name", "cgrates")
 	v.Add("repo", "github.com/cgrates/cgrates")
-	v.Add("description", "A rating system")
-	v.Add("friend", "Zoe")
-	resp, err := http.Get(base + "?" + v.Encode())
+	v.Add("description", "Rating system for telecom providers with deadline. Longer description here!")
+	query := base + "?" + v.Encode()
+	log.Print(query)
+	resp, err := http.Get(query)
 	if err != nil {
-		// handle error
+		log.Fatal(err.Error())
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
